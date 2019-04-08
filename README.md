@@ -22,7 +22,7 @@ see `DH.py`
 
 Run the executable command format:
 
-DH.exe -g <base> -p <prime>
+`DH.exe -g <base> -p <prime>`
 
 -g: the original root
 
@@ -65,7 +65,7 @@ see `DHAttack.py`
 
 Run the executable command format:
 
-DHAttack.exe -A <A_public_key> -B <B_public_key> -g <base> -p <prime>
+`DHAttack.exe -A <A_public_key> -B <B_public_key> -g <base> -p <prime>`
 
 -A: A public key of A
 
