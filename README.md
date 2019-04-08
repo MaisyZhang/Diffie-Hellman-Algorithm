@@ -11,9 +11,9 @@ Suppose Alice needs to negotiate a secret key with Bob. The secret key is essent
 
 (1)   Alice shares a prime p with Bob and the primitive root g of the prime. These two numbers can be sent from one party to the other without encryption. It is not important to send to whom, as long as both parties know that p is known. And g can be.
 
-(2)   Alice produces a private random number A that satisfies 1<= A <= p-1 and then calculates <a href="https://www.codecogs.com/eqnedit.php?latex=g^{A}mod&space;p&space;=&space;Y_{a}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?g^{A}mod&space;p&space;=&space;Y_{a}" title="g^{A}mod p = Y_{a}" /></a> Will result $Y_{a}$ It is sent to Bob through the public network; at the same time, Bob also generates a private random number B, which satisfies 1<= B <= p-1, and calculates $g^{B}mod p = Y_{b}$ Will result $Y_{b}$ Send to Alice via the public network.
+(2)   Alice produces a private random number A that satisfies 1<= A <= p-1 and then calculates g^A mod p = Ya Will result Ya. It is sent to Bob through the public network; at the same time, Bob also generates a private random number B, which satisfies 1<= B <= p-1, and calculates g^B mod p = Yb Will result Yb Send to Alice via the public network.
 
-(3)   The information that Alice knows is p, g, A, $Y_{a}$, where the number A is Alice is private; likewise, Bob knows that the information is p, g, B, $Y_{b}$, where the number B is private to Bob. Alice through calculation $K_{a}=(Y_{b})^{A}mod p$ Get the secret key $K_{a}$ , Bob through calculation $K_{b}=(Y_{a})^{B}mod p$ Get the secret key $K_{b}$ At this time, it can be proved that it must meet $K_{a} = K_{b}$ . Therefore, after the two parties negotiated, they obtained the same secret key and achieved the purpose of secret key negotiation.
+(3)   The information that Alice knows is p, g, A, Ya, where the number A is Alice is private; likewise, Bob knows that the information is p, g, B, Yb, where the number B is private to Bob. Alice through calculation Ka=(Yb)^A mod p and get the secret key Ka , Bob through calculation Kb=(Ya)^B mod p and get the secret key Kb At this time, it can be proved that it must meet Ka = Kb . Therefore, after the two parties negotiated, they obtained the same secret key and achieved the purpose of secret key negotiation.
 
 ### 1.1.2 DH algorithm flow code implementation
 see `DH.py`
@@ -34,7 +34,7 @@ DH.exe -g <base> -p <prime>
 
 The DH algorithm does not have identity verification when transmitting the primitive root g and the prime number p, and thus has the opportunity to be implemented by a man-in-the-middle attack to replace the data transmitted by both parties. The basic flow of cracking the private key of both parties in the DH algorithm is elaborated. Specifically, an example is given. Suppose a binary group (g, p) = (7, 15), the middleman gets the public key of both parties, A is 13 and B is 4.
 
-Formula based on public key $g^{A} mod p = Y_{a}$ , traverse the value of A one by one, as follows:
+Formula based on public key g^A mod p = Ya , traverse the value of A one by one, as follows:
 
 7^A mod 15 calculation process:
 
