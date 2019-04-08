@@ -67,9 +67,9 @@ Run the executable command format:
 
 `DHAttack.exe -A <A_public_key> -B <B_public_key> -g <base> -p <prime>`
 
--A: A public key of A
+-A: A's public key 
 
--B:B's public key
+-B: B's public key
 
 -g: the original root
 
